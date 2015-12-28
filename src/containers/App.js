@@ -1,41 +1,36 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as Actions from '../actions/actions';
-import _ from 'lodash';
-import MessageList from '../components/MessageList';
-import MessageInput from '../components/MessageInput';
-import Gameboy from '../components/Gameboy';
-import SetUser from '../components/SetUser';
+import * as Actions from '../actions';
+import '../socket';
+import Header from '../components/Header';
+import Body from '../containers/Body';
+import { GAME_KEYS } from '../constants/GameKeys';
 
 class App extends Component {
   render() {
-    const { messages, user, actions, frame } = this.props
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-sm-6'>
-            <Gameboy frame={frame}/>
-          </div>
-          <div className='col-sm-6'>
-            {this.userOrInput()}
-            <MessageList messages={messages} />
-          </div>
-        </div>
+      <div>
+        <Header {...this.props} />
+        <Body {...this.props } />
       </div>
     );
   }
 
-  userOrInput() {
-    const { user, actions } = this.props;
-    if (user.name == '') {
-      return (
-        <SetUser onSubmit={actions.changeUser}/>
-      )
-    } else {
-      return (
-        <MessageInput user={user} onSubmit={actions.addMessage}/>
-      )
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+
+  handleKeyDown(event) {
+    const { user, actions, showOptions } = this.props;
+    const code = event.keyCode;
+    if (!showOptions && user.name && document.activeElement == document.body && GAME_KEYS[code]) {
+      event.preventDefault();
+      actions.addMessage(user, GAME_KEYS[code]);
     }
   }
 }
@@ -50,7 +45,9 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     messages: state.messages,
-    frame: state.game
+    frame: state.game,
+    showOptions: state.showOptions,
+    connected: state.connected
   };
 }
 

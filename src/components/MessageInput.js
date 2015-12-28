@@ -17,8 +17,10 @@ class MessageInput extends Component {
   handleSubmit() {
     const user = this.props.user;
     const text = this.state.text.trim();
-    console.log(text);
-    this.props.onSubmit(user, text);
+    if (text && user.name) {
+      this.setState({text: ''});
+      this.props.onSubmit(user, text);
+    }
   }
 
   handleChange(e) {

@@ -1,14 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-class Gameboy extends Component {
-  render() {
+const Gameboy = ({frame}) => {
+  if (frame) {
     return (
-      <div>
-        <img
-          className='img-thumbnail center-block img-responsive'
-          style={{width: '100%'}}
-          alt='game'
-          src={'data:image/png;base64,' + this.props.frame} />
+      <img
+        className='img-responsive'
+        style={{width: '100%'}}
+        alt='game'
+        src={'data:image/png;base64,' + frame} />
+    )
+  } else {
+    return (
+      <div className='text-center'>
+        <i className='fa fa-refresh fa-spin fa-3x'></i>
       </div>
     )
   }
