@@ -19,16 +19,6 @@ module.exports = {
         loaders: ['react-hot', 'babel-loader'],
         exclude: /node_modules/,
         include: __dirname + '/src'
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style', 'raw'],
-        include: __dirname + '/src'
-      },
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
-        include: __dirname + '/src'
       }
     ]
   },
