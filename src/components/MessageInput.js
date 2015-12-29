@@ -17,7 +17,7 @@ class MessageInput extends Component {
   handleSubmit() {
     const user = this.props.user;
     const text = this.state.text.trim();
-    if (text && user.name) {
+    if (this.props.connected && text && user.name) {
       this.setState({text: ''});
       this.props.onSubmit(user, text);
     }
@@ -28,6 +28,8 @@ class MessageInput extends Component {
   }
 
   render() {
+    let btnClass = 'btn btn-primary';
+    if (!this.props.connected || !this.props.user.name) btnClass += ' disabled';
     return (
       <div className='input-group'>
         <input
@@ -38,18 +40,18 @@ class MessageInput extends Component {
           onChange={this.handleChange.bind(this)}
           onKeyDown={this.handleKeyDown.bind(this)} />
         <span className='input-group-btn'>
-          <button className='btn btn-primary' type='button' onClick={this.handleSubmit.bind(this)}>
+          <button className={btnClass} type='button' onClick={this.handleSubmit.bind(this)}>
             Send
           </button>
         </span>
       </div>
-    )
+    );
   }
 }
 
 MessageInput.propTypes = {
   user: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired
-}
+};
 
 export default MessageInput;

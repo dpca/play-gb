@@ -6,16 +6,16 @@ import SetUser from '../components/SetUser';
 
 class Body extends Component {
   render() {
-    const { messages, user, actions, frame, showOptions } = this.props;
+    const { messages, user, actions, frame, showOptions, connected, playerCount } = this.props;
     return (
       <div className='container'>
         <div className='row'>
           <div className='col-sm-6'>
-            <Gameboy frame={frame}/>
+            <Gameboy frame={frame} players={playerCount}/>
           </div>
           <div className='col-sm-6'>
             <div className='row'>
-              {this.userOrInput(user, showOptions, actions)}
+              {this.userOrInput(user, showOptions, actions, connected)}
             </div>
             <div style={{marginTop: '10px'}}>
               <MessageList user={user} messages={messages} />
@@ -23,12 +23,12 @@ class Body extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
-  userOrInput(user, showOptions, actions) {
+  userOrInput(user, showOptions, actions, connected) {
     if (user.name && !showOptions) {
-      return <MessageInput user={user} onSubmit={actions.addMessage}/>;
+      return <MessageInput user={user} onSubmit={actions.addMessage} connected={connected}/>;
     } else {
       return <SetUser user={user}
                       onNameChange={actions.changeUserName}

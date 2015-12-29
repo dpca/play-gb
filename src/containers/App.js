@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../actions';
 import '../socket';
+import '../keyboardListener';
 import Header from '../components/Header';
 import Body from '../containers/Body';
 import { GAME_KEYS } from '../constants/GameKeys';
@@ -15,23 +16,6 @@ class App extends Component {
         <Body {...this.props } />
       </div>
     );
-  }
-
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown.bind(this));
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown.bind(this));
-  }
-
-  handleKeyDown(event) {
-    const { user, actions, showOptions } = this.props;
-    const code = event.keyCode;
-    if (!showOptions && user.name && document.activeElement == document.body && GAME_KEYS[code]) {
-      event.preventDefault();
-      actions.addMessage(user, GAME_KEYS[code]);
-    }
   }
 }
 
@@ -47,7 +31,8 @@ function mapStateToProps(state) {
     messages: state.messages,
     frame: state.game,
     showOptions: state.showOptions,
-    connected: state.connected
+    connected: state.connected,
+    playerCount: state.playerCount
   };
 }
 

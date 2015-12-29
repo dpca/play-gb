@@ -8,17 +8,17 @@ const MessageList = ({user, messages}) => {
         className='list-unstyled' >
       {
         messages.map((message, idx) => {
-          return <Message key={'message-' + idx} user={user} message={message} />
+          return <Message key={'message-' + idx} user={user} message={message} />;
         })
       }
       <WelcomeMessage />
     </ul>
   );
-}
+};
 
 MessageList.propTypes = {
   user: PropTypes.object.isRequired,
   messages: PropTypes.array.isRequired
-}
+};
 
 export default MessageList;

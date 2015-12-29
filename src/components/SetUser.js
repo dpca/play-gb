@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import ColorPicker from 'react-color';
-import { COLORS } from '../constants/Colors';
 
 class SetUser extends Component {
   constructor(props, context) {
@@ -55,13 +54,13 @@ class SetUser extends Component {
                        onChangeComplete={this.handleColorPick.bind(this)} />
         </div>
       </div>
-    )
+    );
   }
 }
 
 SetUser.propTypes = {
   onNameChange: PropTypes.func.isRequired,
   onColorChange: PropTypes.func.isRequired
-}
+};
 
 export default SetUser;

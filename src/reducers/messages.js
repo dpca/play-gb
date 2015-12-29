@@ -9,7 +9,7 @@ export default function reducer(state = initialState, action) {
       socket.emit('message', action.user, action.message);
       return [{ user: action.user, message: action.message }].concat(state);
     case REMOTE_MESSAGE:
-      return [{ user: action.user, message: action.message }].concat(state);;
+      return [{ user: action.user, message: action.message }].concat(state);
     default:
       return state;
   }

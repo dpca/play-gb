@@ -4,7 +4,7 @@ import uuid from 'node-uuid';
 import reducer from './reducers/index';
 import { COLORS } from './constants/Colors';
 
-const store = createStore(reducer, {
+const initialState = {
   user: {
     uid: localStorage.getItem('uid') || uuid.v4(),
     name: localStorage.getItem('name') || '',
@@ -13,7 +13,10 @@ const store = createStore(reducer, {
   messages: [],
   game: '',
   showOptions: false,
-  connected: false
-});
+  connected: false,
+  playerCount: 0
+};
+
+const store = createStore(reducer, initialState);
 
 export default store;
