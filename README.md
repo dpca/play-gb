@@ -28,7 +28,7 @@ $ npm run dev
 ```
 
 and navigate to
-[http://localhost:8080/webpack-dev-server](http://localhost:8080/webpack-dev-server)
+[http://localhost:8080/webpack-dev-server](http://localhost:8080/webpack-dev-server/)
 
 ## Deploy
 
