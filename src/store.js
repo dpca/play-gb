@@ -4,9 +4,15 @@ import uuid from 'node-uuid';
 import reducer from './reducers/index';
 import { COLORS } from './constants/Colors';
 
+let uid = localStorage.getItem('uid');
+if (!uid) {
+  uid = uuid.v4();
+  localStorage.setItem('uid', uid);
+}
+
 const initialState = {
   user: {
-    uid: localStorage.getItem('uid') || uuid.v4(),
+    uid: uid,
     name: localStorage.getItem('name') || '',
     color: localStorage.getItem('color') || _.sample(COLORS)
   },
