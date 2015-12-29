@@ -38,5 +38,5 @@ To bundle everything for production use, run:
 $ npm run build
 ```
 
-Everything should now be bundle up nicely in `dist/bundle.js`, and loaded by
+Everything should now be bundled up nicely in `dist/bundle.js`, and loaded by
 `dist/index.html`.
