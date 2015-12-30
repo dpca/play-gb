@@ -4,8 +4,8 @@
   "description": "Super simple Twitch plays * clone",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "build": "NODE_ENV=production webpack --config webpack.production.config.js"
+    "dev": "webpack-dev-server --config webpack.config.development.js",
+    "build": "NODE_ENV=production webpack --config webpack.config.production.js -p"
   },
   "author": "Dan Cahoon",
   "license": "MIT",
