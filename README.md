@@ -40,3 +40,17 @@ $ npm run build
 
 Everything should now be bundled up nicely in `dist/bundle.js`, and loaded by
 `dist/index.html`.
+
+To set the above environment variables, you can use webpack's
+[DefinePlugin](https://github.com/webpack/docs/wiki/list-of-plugins#defineplugin)
+by altering `webpack.config.production.js`. Change the plugins section to
+include something like:
+
+```javascript
+new Webpack.DefinePlugin({
+  'process.env': {
+    TITLE: JSON.stringify('Play Pokémon!'),
+    SERVER_URI: JSON.stringify('localhost:8090')
+  }
+})
+```
