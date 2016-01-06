@@ -12,7 +12,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header {...this.props} />
+        <Header user={this.props.user}
+                showOptions={this.props.showOptions}
+                actions={this.props.actions}
+                connected={this.props.connected} />
         <Body {...this.props } />
       </div>
     );

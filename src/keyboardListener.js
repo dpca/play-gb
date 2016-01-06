@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import store from './store';
 import { addMessage } from './actions';
 import { GAME_KEYS } from './constants/GameKeys';
@@ -15,4 +16,4 @@ function handleKeyDown(event) {
       }
 }
 
-document.addEventListener('keydown', handleKeyDown);
+document.addEventListener('keydown', _.throttle(handleKeyDown, 100));
