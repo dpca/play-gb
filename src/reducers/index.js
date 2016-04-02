@@ -5,7 +5,16 @@ import game from './game';
 import showOptions from './showOptions';
 import connected from './connection';
 import playerCount from './playerCount';
+import showKeys from './showKeys';
 
-const rootReducer = combineReducers({ messages, user, game, showOptions, connected, playerCount });
+const rootReducer = combineReducers({
+  messages,
+  user,
+  game,
+  showOptions,
+  connected,
+  playerCount,
+  showKeys
+});
 
 export default rootReducer;

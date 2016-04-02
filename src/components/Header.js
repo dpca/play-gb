@@ -24,6 +24,11 @@ const Header = ({user, showOptions, actions, connected}) => {
                   <i className={gearClass}/>
                 </a>
               </li>
+              <li title='Toggle keys'>
+                <a onClick={actions.showKeys}>
+                  <i className='fa fa-keyboard-o' />
+                </a>
+              </li>
               <li title='Connection status'>
                 <a>
                   <i className={statusClass} />

@@ -20,7 +20,8 @@ const initialState = {
   game: '',
   showOptions: false,
   connected: false,
-  playerCount: 0
+  playerCount: 0,
+  showKeys: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 };
 
 const store = createStore(reducer, initialState);

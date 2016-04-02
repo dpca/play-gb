@@ -6,17 +6,36 @@ import '../socket';
 import '../keyboardListener';
 import Header from '../components/Header';
 import Body from '../containers/Body';
+import Footer from '../containers/Footer';
 import { GAME_KEYS } from '../constants/GameKeys';
 
+const bottomMargin = '150px';
+const containerStyle = { marginBottom: bottomMargin };
+const footerStyle = { position: 'absolute', bottom: 0, width: '100%', height: bottomMargin};
+
 class App extends Component {
+  renderFooterIfMobile() {
+    if (this.props.showKeys) {
+      return (
+        <Footer footerStyle={footerStyle}
+          user={this.props.user}
+          actions={this.props.actions}
+          connected={this.props.connected} />
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div style={containerStyle}>
         <Header user={this.props.user}
                 showOptions={this.props.showOptions}
                 actions={this.props.actions}
                 connected={this.props.connected} />
         <Body {...this.props } />
+        { this.renderFooterIfMobile() }
       </div>
     );
   }
@@ -35,7 +54,8 @@ function mapStateToProps(state) {
     frame: state.game,
     showOptions: state.showOptions,
     connected: state.connected,
-    playerCount: state.playerCount
+    playerCount: state.playerCount,
+    showKeys: state.showKeys
   };
 }
 

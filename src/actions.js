@@ -7,7 +7,8 @@ import {
   SHOW_OPTIONS,
   SOCKET_CONNECTED,
   SOCKET_DISCONNECTED,
-  PLAYER_COUNT_UPDATE
+  PLAYER_COUNT_UPDATE,
+  SHOW_KEYS
 } from './constants/ActionTypes';
 
 export function addMessage(user, message) {
@@ -44,4 +45,8 @@ export function socketDisconnected() {
 
 export function playerCountUpdate(count) {
   return { type: PLAYER_COUNT_UPDATE, count }
+}
+
+export function showKeys() {
+  return { type: SHOW_KEYS };
 }
