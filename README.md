@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/dpca/play-gb/badges/gpa.svg)](https://codeclimate.com/github/dpca/play-gb)
+
+* * *
+
 # Play GB Client
 
 Play Gameboy in the cloud! With other humans!
