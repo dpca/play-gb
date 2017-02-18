@@ -10,10 +10,10 @@ class Body extends Component {
     return (
       <div className='container'>
         <div className='row'>
-          <div className='col-sm-6'>
+          <div className='col-xs-6'>
             <Gameboy frame={frame} players={playerCount}/>
           </div>
-          <div className='col-sm-6'>
+          <div className='col-xs-6'>
             <div className='row'>
               {this.userOrInput(user, showOptions, actions, connected)}
             </div>
